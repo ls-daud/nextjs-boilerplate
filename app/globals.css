@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
-  --surface: rgba(13, 17, 33, 0.85);
-  --card: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #f97316;
-  --accent-strong: #fb7185;
-  --text-primary: #f8fafc;
-  --text-muted: #94a3b8;
+  --background: #f5f7fb;
+  --surface: #ffffff;
+  --card: rgba(255, 255, 255, 0.9);
+  --border: rgba(148, 163, 184, 0.35);
+  --accent: #2563eb;
+  --accent-strong: #0ea5a4;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: radial-gradient(circle at 20% 20%, #1e3a8a 0%, transparent 45%),
-    radial-gradient(circle at 80% 0%, #fb7185 0%, transparent 40%),
-    linear-gradient(135deg, #030712 0%, #0f172a 60%, #020617 100%);
+  background: radial-gradient(
+      circle at 18% 20%,
+      rgba(37, 99, 235, 0.12) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(14, 165, 233, 0.12) 0%,
+      transparent 40%
+    ),
+    linear-gradient(135deg, #f8fafc 0%, #eef2f7 55%, #fefcf8 100%);
   color: var(--text-primary);
-  font-family: var(--font-space-grotesk), var(--font-noto-sans-jp), sans-serif;
+  font-family: var(--font-noto-sans-jp), var(--font-space-grotesk), sans-serif;
   position: relative;
 }
 
@@ -28,28 +36,61 @@ body::before {
   inset: 0;
   background-image: linear-gradient(
       120deg,
-      rgba(255, 255, 255, 0.05) 1px,
+      rgba(15, 23, 42, 0.06) 1px,
       transparent 1px
     ),
     linear-gradient(
       60deg,
-      rgba(255, 255, 255, 0.025) 1px,
+      rgba(15, 23, 42, 0.04) 1px,
       transparent 1px
     );
-  background-size: 120px 120px;
-  opacity: 0.4;
+  background-size: 140px 140px;
+  opacity: 0.35;
   pointer-events: none;
   z-index: -1;
 }
 
 ::selection {
   background: var(--accent);
-  color: #030712;
+  color: #f8fafc;
 }
 
 .glass-panel {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   backdrop-filter: blur(18px);
-  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.45);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-rise {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.delay-1 {
+  animation-delay: 0.08s;
+}
+
+.delay-2 {
+  animation-delay: 0.16s;
+}
+
+.delay-3 {
+  animation-delay: 0.24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-rise {
+    animation: none;
+  }
 }
