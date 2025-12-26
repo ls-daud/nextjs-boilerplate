@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { copy, i18n, Locale, localeLabels } from "@/lib/i18n";
 
 const MIN_CHAR_COUNT = 10;
-const MAX_CHAR_COUNT = 500;
+const MAX_CHAR_COUNT = 1000;
 
 const revieweeProfile = {
   handle: "ls-daud",
@@ -243,7 +243,7 @@ export default function Home() {
                   </label>
                   <p className="mt-2 text-sm text-slate-600">{t.positiveHint}</p>
                   <textarea
-                    className="mt-3 min-h-[150px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-4 text-base text-slate-900 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
+                    className="mt-3 min-h-[220px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-4 text-[15px] leading-relaxed text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
                     placeholder={t.positivePlaceholder}
                     value={formFields.strengths}
                     onChange={(event) => handleFieldChange("strengths", event)}
@@ -272,7 +272,7 @@ export default function Home() {
                   </label>
                   <p className="mt-2 text-sm text-slate-600">{t.improvementHint}</p>
                   <textarea
-                    className="mt-3 min-h-[150px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-4 text-base text-slate-900 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
+                    className="mt-3 min-h-[220px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-4 text-[15px] leading-relaxed text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
                     placeholder={t.improvementPlaceholder}
                     value={formFields.improvements}
                     onChange={(event) => handleFieldChange("improvements", event)}

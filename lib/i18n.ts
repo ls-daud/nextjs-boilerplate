@@ -45,8 +45,8 @@ export const copy: Record<Locale, Copy> = {
   en: {
     heroTitle: "Feedback for Daud",
     heroSubtitle:
-      "I hope to improve next year. Please share concise, constructive feedback about what is going well and what could be improved.",
-    badge: "Open until Jun 30",
+      "Thank you for taking the time to help me grow. Please share specific strengths and areas to improve so I can develop further next year.",
+    badge: "Open until Dec 31, 2025",
     instructionTitle: "Quick guidance",
     instructionBody: "Focus on behaviors and impact.",
     instructionBullets: [
@@ -56,14 +56,16 @@ export const copy: Record<Locale, Copy> = {
     ],
     positiveMeta: "Question 1 of 2",
     positiveLabel: "What is going well (Keep)",
-    positiveHint: "Example: project contributions, collaboration, communication.",
+    positiveHint:
+      "Example: project contributions, collaboration, communication. You can use bullet points (-) for clarity.",
     positivePlaceholder:
-      "Example: You kept the release calm by aligning QA early; sharing the checklist sooner would make it even smoother.",
+      "Example:\n- You kept the release calm by aligning QA early.\n- Sharing the checklist sooner would make it even smoother.",
     improvementMeta: "Question 2 of 2",
     improvementLabel: "What could be improved (Improve)",
-    improvementHint: "Offer a concrete change you'd like to see next time.",
+    improvementHint:
+      "Offer a concrete change you'd like to see next time. Bullet points (-) are welcome.",
     improvementPlaceholder:
-      "Example: The kickoff was rushed; sending a brief agenda 24h ahead would help everyone prepare.",
+      "Example:\n- The kickoff was rushed.\n- Sending a brief agenda 24h ahead would help everyone prepare.",
     nameLabel: "Your name (optional)",
     nameHint: "Shown to Daud only if you decide to include it.",
     anonymousLabel: "Send feedback anonymously",
@@ -100,14 +102,16 @@ export const copy: Record<Locale, Copy> = {
     ],
     positiveMeta: "質問 1 / 2",
     positiveLabel: "良かった点（Keep）",
-    positiveHint: "例: プロジェクト貢献、連携、コミュニケーションなど。",
+    positiveHint:
+      "例: プロジェクト貢献、連携、コミュニケーションなど。箇条書き（-）でもOKです。",
     positivePlaceholder:
-      "例: QAと早めに連携してリリースを安定させてくれた。次はチェックリストを先に共有するとさらに良い。",
+      "例:\n- QAと早めに連携してリリースを安定させてくれた。\n- 次はチェックリストを先に共有するとさらに良い。",
     improvementMeta: "質問 2 / 2",
     improvementLabel: "改善できる点（Improve）",
-    improvementHint: "次回こうすると良い、という提案を添えると助かります。",
+    improvementHint:
+      "次回こうすると良い、という提案を添えると助かります。箇条書き（-）でもOKです。",
     improvementPlaceholder:
-      "例: キックオフが少し急だったので、24時間前に簡単なアジェンダがあると準備しやすい。",
+      "例:\n- キックオフが少し急だった。\n- 24時間前に簡単なアジェンダがあると準備しやすい。",
     nameLabel: "お名前（任意）",
     nameHint: "記入すると本人にのみ表示されます。",
     anonymousLabel: "匿名で送信する",
