@@ -90,14 +90,13 @@ const copy: Record<Locale, Copy> = {
     submitCta: "Send feedback",
     submittingCta: "Sending...",
     successTitle: "Thank you!",
-    successBody:
-      "Your feedback has been saved. I appreciate your honesty and care.",
+    successBody: "Thank you so much for your feedback and suggestions.",
     invalidMessage:
       "Please write at least ten characters in both sections so the feedback stays actionable.",
     errorGeneric:
       "Something went wrong while saving your feedback. Please try again in a moment.",
     envMissing:
-      "Supabase is not configured yet. Let Daud know so he can add the environment keys.",
+      "Supabase is not configured yet. Please add the environment keys.",
   },
   ja: {
     heroTitle: "Daud へのフィードバック",
@@ -135,13 +134,12 @@ const copy: Record<Locale, Copy> = {
     submitCta: "フィードバックを送信",
     submittingCta: "送信中...",
     successTitle: "ありがとうございます！",
-    successBody:
-      "フィードバックを受け取りました。丁寧に読み、必要があれば追ってご連絡します。",
+    successBody: "Thank you so much for your feedback and suggestions.",
     invalidMessage: "各欄10文字以上でご記入ください。",
     errorGeneric:
       "送信時にエラーが発生しました。時間をおいて再度お試しください。",
     envMissing:
-      "Supabaseの環境変数が未設定です。Daudに連絡して設定を追加してもらってください。",
+      "Supabaseの環境変数が未設定です。環境キーを追加してください。",
   },
 };
 
@@ -165,6 +163,7 @@ export default function Home() {
     reviewerName: "",
   });
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [submission, setSubmission] = useState<SubmissionState>({ state: "idle" });
   const t = copy[locale];
 
@@ -233,6 +232,7 @@ export default function Home() {
     setSubmission({ state: "success", message: t.successBody });
     setFormFields({ strengths: "", improvements: "", reviewerName: "" });
     setIsAnonymous(false);
+    setShowSuccess(true);
   };
 
   const charCounts = {
@@ -241,12 +241,14 @@ export default function Home() {
   };
 
   const statusTone =
-    submission.state === "success"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-      : submission.state === "error"
-        ? "border-rose-200 bg-rose-50 text-rose-700"
-        : "border-slate-200 bg-slate-50 text-slate-600";
-  const showStatus = submission.state === "success" || submission.state === "error";
+    submission.state === "error"
+      ? "border-rose-200 bg-rose-50 text-rose-700"
+      : "border-slate-200 bg-slate-50 text-slate-600";
+  const showStatus = submission.state === "error";
+  const closeSuccessModal = () => {
+    setShowSuccess(false);
+    setSubmission({ state: "idle" });
+  };
 
   return (
     <div className="px-4 py-12 sm:px-6 lg:px-10">
@@ -453,7 +455,7 @@ export default function Home() {
                 <div className="space-y-3">
                   <button
                     type="submit"
-                    disabled={!isValid || submission.state === "submitting"}
+                    disabled={submission.state === "submitting"}
                     className="w-full rounded-2xl bg-sky-600 px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {submission.state === "submitting"
@@ -466,9 +468,7 @@ export default function Home() {
                       aria-live="polite"
                       className={`rounded-2xl border px-4 py-3 text-sm ${statusTone}`}
                     >
-                      {submission.state === "success"
-                        ? `${t.successTitle} ${submission.message}`
-                        : submission.message}
+                      {submission.message}
                     </div>
                   ) : null}
                 </div>
@@ -477,6 +477,25 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {showSuccess ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-4">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
+            <h2 className="text-lg font-semibold text-slate-900">
+              {t.successTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              {t.successBody}
+            </p>
+            <button
+              type="button"
+              onClick={closeSuccessModal}
+              className="mt-6 w-full rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
